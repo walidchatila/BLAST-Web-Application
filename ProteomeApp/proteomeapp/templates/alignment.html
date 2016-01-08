@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+<xi:include href="master.html" />
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" py:replace="''"/>
+    <title>${title}</title>
+</head>
+<body>
+	<div class = "container">
+		<h2>Alignment:</h2>
+			<div class="table-responsive">
+			<table class='table table-hover'>	
+
+			<tr><th>Query&nbsp;Protein</th><td>Name: ${alignment.query_protein.protein_name} | GI: <a href="${tg.url('protein', query = alignment.query_protein.gi, mode='GI')}">${alignment.query_protein.gi}</a> | Accession: <a href="${tg.url('protein', query = alignment.query_protein.accesion, mode='Accession')}">${alignment.query_protein.accesion}</a> |  Organism: ${query_organism}
+			</td>
+			</tr>
+			<tr><th>Alignment&nbsp;Protein</th><td>Name: ${alignment.alignment_protein.protein_name} |
+				(GI: <a href="${tg.url('protein', query = alignment.alignment_protein.gi, mode='GI')}">${alignment.alignment_protein.gi})</a> |
+				(Accession: <A href="${tg.url('protein', query = alignment.alignment_protein.accesion , mode='Accession')}">${alignment.alignment_protein.accesion})</A> | Organism: ${alignment_organism}
+				</td>
+			</tr>
+
+				<tr><th>Hit&nbsp;Length</th><td>${alignment.length}</td></tr>
+				<tr><th>Hit&nbsp;E-value</th><td>${alignment.e_value}</td></tr>
+				<tr><th>Hit&nbsp;Score</th><td>${alignment.score}</td></tr>
+
+
+	</table>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+[console_scripts]
+bootstrap-proteomeapp = proteomeapp.command:bootstrap
+start-proteomeapp = proteomeapp.command:start
+

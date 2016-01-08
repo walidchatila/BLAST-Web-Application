@@ -1,0 +1,6 @@
+include start-proteomeapp.py
+include *.cfg
+include proteomeapp/config/*.cfg
+recursive-include proteomeapp/templates *.html
+recursive-include proteomeapp/templates *.kid
+recursive-include proteomeapp/static *

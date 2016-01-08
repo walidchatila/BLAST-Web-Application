@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+<xi:include href="master.html" />
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" py:replace="''"/>
+    <title>${title}</title>
+
+
+</head>
+<body>
+<div class ="page-headder">
+  <ul class ="nav nav-pills pull-right">
+    <li role="presentation"><a href="${tg.paginate.get_href(1)}">Refresh</a></li>
+  </ul>
+  <h2>List of Orthologous Proteins:</h2>
+  <h4>Number of Ortholgs: ${count}</h4>
+</div>
+
+ <div class= "table-responsive">
+<table class="table table-hover ">
+  <thead>
+
+    <tr>
+        <th> </th>
+        <th class ='text-center' colspan='3'><h2>First Protein</h2></th>
+        <th class ='text-center' colspan='3'><h2>Second Protein</h2></th>
+    </tr>
+
+    <tr>
+      <th class ='text-center'><a href="${tg.paginate.get_href(1,order='id')}">Number</a></th> 
+      <th class ='text-center'><a href="${tg.paginate.get_href(1,order='protein_1.protein_name')}">Name</a></th>
+      <th class ='text-center'><a href="${tg.paginate.get_href(1,order='protein_1.accesion')}">Accesion</a></th>
+      <th class ='text-center'><a href="${tg.paginate.get_href(1,order='protein_1.gi')}">GI Number</a></th>
+      <th class ='text-center'><a href="${tg.paginate.get_href(1,order='protein_2.protein_name')}">Name</a></th>
+      <th class ='text-center'><a href="${tg.paginate.get_href(1,order='protein_2.accesion')}">Accesion</a></th>
+      <th class ='text-center'><a href="${tg.paginate.get_href(1,order='protein_2.gi')}">GI Number</a></th>
+    </tr>
+  </thead>  
+  <tbody>
+      <tr py:for="o in (orthologs)">
+        <td class="text-center">${o.id}.</td>
+        <td class="text-center">${o.protein_1.protein_name}</td>
+        <td class="text-center">${o.protein_1.accesion}</td>
+        <td class="text-center"><a href="${tg.url('/protein', query=o.protein_1.gi, mode='GI')}">${o.protein_1.gi}</a></td>
+        <td class="text-center">${o.protein_2.protein_name}</td>
+        <td class="text-center">${o.protein_2.accesion}</td>
+        <td class="text-center"><a href="${tg.url('/protein', query=o.protein_2.gi, mode='GI')}">${o.protein_2.gi}</a></td>
+
+      </tr>
+  </tbody> 
+
+</table>
+<ul class="pagination">
+  <li py:for="page in tg.paginate.pages">
+    <a href="${tg.paginate.get_href(page)}" py:content="page"/>
+  </li>
+</ul>
+<br/>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+<xi:include href="master.html" />
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" py:replace="''"/>
+    <title>Search: ${mode} ${query}</title>
+</head>
+<body>
+	<P/>
+	<table py:if="proteins.count() > 0">
+		<tr>
+			<th> Accesion</th>
+			<th> Name</th>
+		</tr>
+		<tr py:for="p in proteins">
+			<td><A href ="${tg.url('/protein', accesion=p.accesion)}">${p.accesion}</A></td>
+			<td>${p.protein_name}</td>
+		</tr>
+	</table>
+	
+	<P/>
+	<A href="${tg.url('/search_page')}">New search</A>
+	
+</body>
+</html>

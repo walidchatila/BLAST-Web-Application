@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+<xi:include href="master.html" />
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" py:replace="''"/>
+    <title>${title}</title>
+</head>
+<body>
+	<div class = "container">
+		<h2>Protein:</h2>
+		<div class="table-responsive">
+			<table class='table table-hover'>
+			
+
+			<tr><th>Organism&nbsp;Name</th><td>${organism}</td></tr>
+			<tr><th>Gi&nbsp;Number</th><td>${protein.gi}</td></tr>
+			<tr><th>Accession &nbsp;Number</th><td>${protein.accesion}</td></tr>
+			<tr><th>Protein &nbsp;Name</th><td>${protein.protein_name}</td></tr>
+			<tr py:for="a in protein.hits"><th>Allignment</th>
+				<td>${a.alignment_protein.protein_name}
+				<A href="${tg.url('/protein', query = a.alignment_protein.gi, mode='GI')}">(Protein Page</A>)
+				(<A href="${tg.url('/alignment', p_gi = protein.gi, a_gi=a.alignment_protein.gi)}">Alignment Page</A>)</td></tr>
+
+
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>

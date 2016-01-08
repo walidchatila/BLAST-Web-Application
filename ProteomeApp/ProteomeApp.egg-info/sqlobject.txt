@@ -1,0 +1,2 @@
+db_module=proteomeapp.model
+history_dir=$base/proteomeapp/sqlobject-history
